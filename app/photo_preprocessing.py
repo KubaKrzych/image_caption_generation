@@ -1,20 +1,16 @@
 import tensorflow as tf
 import os
 
-from glob import glob
 from tensorflow import keras
 from keras.applications.vgg16 import VGG16, preprocess_input
-from keras import layers
-from keras.models import Sequential
 from keras.utils.image_utils import load_img, img_to_array
 from keras.models import Model
 from pickle import dump
 
+SIZE = (224, 224)
 
 if __name__ == "__main__":
         
-    SIZE = (224,224)
-
     path = os.path.join("data", "info_on_images", "Flickr_8k.trainImages.txt")
     model = VGG16()
     model = Model(inputs=model.input, outputs=model.layers[-2].output)

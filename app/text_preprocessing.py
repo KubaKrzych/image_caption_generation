@@ -5,6 +5,7 @@ from nltk.stem.porter import PorterStemmer
 STOP_WORDS = set(stopwords.words('english'))
 BEGIN = '^'
 END = '$'
+SEP = '###'
 STEMMER = PorterStemmer()
 
 
@@ -59,7 +60,7 @@ def save_descriptions_to_a_file(descriptions, filename):
     lines = list()
     for key, desc_list in descriptions.items():
         for desc in desc_list:
-            lines.append(key + ' ' + desc)
+            lines.append(key + SEP + desc)
     data = '\n'.join(lines)
     file = open(filename, 'w')
     file.write(data)
