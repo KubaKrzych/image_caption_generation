@@ -26,10 +26,8 @@ if __name__ == "__main__":
     filename = 'data/info_on_images/Flickr_8k.trainImages.txt'
     train = load_file(filename)
     print('Dataset: %d' % len(train))
-    # descriptions
     train_descriptions = get_clean_descriptions(train, 'utils/descriptions.txt')
     print('Descriptions: train=%d' % len(train_descriptions))
-    # photo features
     train_features = get_feature_vector(train, 'utils/features.pkl')
     print('Photos: train=%d' % len(train_features))
     print(train_descriptions.items())
