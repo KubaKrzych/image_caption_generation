@@ -26,8 +26,8 @@ def text_preprocessing(text: str):
     text = BEGIN + ' ' + text + ' ' + END
     # THE BELOW ARE NOT NECESSARY AND MIGHT BE TROUBLESOME
     text = text.split()
-    text = list(filter(lambda x: (x not in STOP_WORDS or is_stop_token(x)) and not x.isnumeric(), text))
-    text = " ".join([STEMMER.stem(w) for w in text])
+    # text = list(filter(lambda x: (x not in STOP_WORDS or is_stop_token(x)) and not x.isnumeric(), text))
+    text = " ".join(text)
 
     return text
 
@@ -38,7 +38,7 @@ def load_file(path: str):
     return text
 
 
-def get_descriptions(text: list[str]):
+def get_descriptions(text):
     descriptions = {}
 
     for line in text:

@@ -3,7 +3,7 @@ from keras.models import Model
 from keras.utils import plot_model
 from text_vectorization import size_of_vocab, create_tokenizer, flatten_descriptions, max_len, generate_data
 from load_data import load_file, get_clean_descriptions, get_feature_vector
-
+from pickle import dump
 
 def create_model(vocab_size, max_length_of_seq):
     image_input = Input(shape=(4096,))
@@ -36,14 +36,14 @@ def train_model(file_path, epochs):
     tokenizer = create_tokenizer(flatten_description)
 
     vocab_size = size_of_vocab(tokenizer)
-    max_length = max_len(flatten_description)
+    max_length = 34 #TO JEST ZLE
     model = create_model(vocab_size, max_length)
 
     steps = len(flatten_description)
     for i in range(epochs):
         gen = generate_data(descriptions, features, tokenizer, max_length, vocab_size)
         model.fit(gen, epochs=1, steps_per_epoch=steps,verbose=1)
-        model.save('models/model_' + str(i) + '.h5')
+        model.save('models/model_unstemmed_' + str(i) + '.h5')
 
 
 if __name__ == "__main__":

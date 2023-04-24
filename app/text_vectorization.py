@@ -52,6 +52,9 @@ def create_tokenizer(description_list):
     tokenizer.fit_on_texts(description_list)
     return tokenizer
 
+def get_reverse_tokenizer(tokenizer: Tokenizer):
+    return {v:k for (k,v) in tokenizer.word_index.items()}
+
 
 def flatten_descriptions(descriptions):
     return [item for sub in descriptions.values() for item in sub]

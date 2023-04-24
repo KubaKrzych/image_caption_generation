@@ -3,7 +3,7 @@ import pickle
 from text_preprocessing import load_file, SEP
 
 
-def get_clean_descriptions(image_ids: list[str], descriptions_path: str):
+def get_clean_descriptions(image_ids, descriptions_path):
     descriptions = load_file(descriptions_path)
     descriptions = list(map(lambda x: x.split(SEP), descriptions))
     multiple_descriptions = {}
@@ -17,7 +17,7 @@ def get_clean_descriptions(image_ids: list[str], descriptions_path: str):
     return multiple_descriptions
 
 
-def get_feature_vector(image_ids: list[str], features_path: str):
+def get_feature_vector(image_ids, features_path):
     features_vectors = pickle.load(open(features_path, 'rb'))
     return {k:v for (k,v) in features_vectors.items() if k in image_ids}
 

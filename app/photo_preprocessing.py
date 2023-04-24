@@ -10,8 +10,8 @@ from pickle import dump
 SIZE = (224, 224)
 
 if __name__ == "__main__":
-        
-    path = os.path.join("data", "info_on_images", "Flickr_8k.trainImages.txt")
+    filename = "Flickr_8k.trainImages.txt"
+    path = os.path.join("data", "info_on_images", filename)
     model = VGG16()
     model = Model(inputs=model.input, outputs=model.layers[-2].output)
     print(model.summary())
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
         image = preprocess_input(image)
 
-        feature = model.predict(image, verbose=2)
+        feature = model.predict(image, verbose=0)
 
         features_vectors[image_name] = feature
     
