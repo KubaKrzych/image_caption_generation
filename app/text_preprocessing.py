@@ -3,8 +3,8 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
 STOP_WORDS = set(stopwords.words('english'))
-BEGIN = '^'
-END = '$'
+BEGIN = 'startseq'
+END = 'endseq'
 SEP = '###'
 STEMMER = PorterStemmer()
 

@@ -16,11 +16,10 @@ def predict_description(model, tokenizer: Tokenizer, photo, max_length):
     input = BEGIN
     reversed_tokenizer = get_reverse_tokenizer(tokenizer)
     for i in range(max_length):
+        
         sequence = tokenizer.texts_to_sequences([input])[0]
         sequence = pad_sequences([sequence], maxlen=max_length)
-
         y_predict = model.predict([photo, sequence], verbose=0)
-
         y_predict = argmax(y_predict)
 
         predicted_word: str = reversed_tokenizer[y_predict]
@@ -42,7 +41,7 @@ def evaluate_model(model, descriptions, photos, tokenizer, max_length):
     y, y_pred = [], []
     for k, desc_list in descriptions.items():
         predicted_description = predict_description(model, tokenizer, photos[k], max_length)
-        refs = [desc.split() for desc in descriptions]
+        refs = [desc.split() for desc in desc_list]
         y.append(refs)
         y_pred.append(predicted_description)
 

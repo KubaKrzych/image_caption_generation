@@ -17,7 +17,6 @@ def generate_data(descriptions, features, tokenizer, max_length, vocab_size):
     while 1:
         for key, desc_list in descriptions.items():
             feature = features[key][0]
-            flatten = [item for sub in descriptions.values() for item in sub]
 
             input_img, input_seq, output_seq = create_sequences(tokenizer, max_length, desc_list, feature, vocab_size)
             yield [[input_img, input_seq], output_seq]
