@@ -25,4 +25,4 @@ if __name__ == "__main__":
 
     photo = extract_features(path_to_img)
     description = predict_description(model, tokenizer, photo, 34)
-    
+    print(description)
